@@ -3,9 +3,11 @@ import ExperienceCard from "./ExperienceCard";
 import bike from "../img/mountain-bike-1.png";
 import swimmer from "../img/image-12.png";
 import photographer from "../img/wedding-photography-1.png";
+import { v4 as uuidv4 } from "uuid";
 
 const experiences = [
   {
+    id: uuidv4(),
     soldOut: true,
     rating: 5.0,
     numberReviews: 6,
@@ -15,6 +17,7 @@ const experiences = [
     cardBackground: swimmer,
   },
   {
+    id: uuidv4(),
     soldOut: true,
     rating: 5.0,
     numberReviews: 30,
@@ -24,6 +27,7 @@ const experiences = [
     cardBackground: photographer,
   },
   {
+    id: uuidv4(),
     soldOut: false,
     rating: 4.8,
     numberReviews: 2,
@@ -34,31 +38,21 @@ const experiences = [
   },
 ];
 
-function createCarousel() {
-  const carouselArray = [];
-  for (let i = 0; i < experiences.length; i++) {
-    carouselArray.push(
-      <ExperienceCard
-        key={i}
-        rating={experiences[i].rating}
-        numberReviews={experiences[i].numberReviews}
-        country={experiences[i].country}
-        description={experiences[i].description}
-        price={experiences[i].price}
-        soldOut={experiences[i].soldOut}
-        cardBackground={experiences[i].cardBackground}
-      />
-    );
-  }
-  return carouselArray;
-}
-
 export default function Carousel() {
   return (
     <div className="flex gap-5 mx-5">
-      {createCarousel()}
-
-      {/* <ExperienceCard data={rating} /> */}
+      {experiences.map((experience) => (
+        <ExperienceCard
+          key={experience.id}
+          rating={experience.rating}
+          numberReviews={experience.numberReviews}
+          country={experience.country}
+          description={experience.description}
+          price={experience.price}
+          soldOut={experience.soldOut}
+          cardBackground={experience.cardBackground}
+        />
+      ))}
     </div>
   );
 }
