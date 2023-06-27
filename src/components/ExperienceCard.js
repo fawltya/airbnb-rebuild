@@ -5,7 +5,7 @@ import SoldOut from "./SoldOut";
 import star from "../img/Star 1.png";
 
 export default function ExperienceCard(props) {
-  let bgImg = "";
+  console.log(props);
   return (
     <div>
       <div

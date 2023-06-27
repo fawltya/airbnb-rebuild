@@ -42,16 +42,7 @@ export default function Carousel() {
   return (
     <div className="flex gap-5 mx-5">
       {experiences.map((experience) => (
-        <ExperienceCard
-          key={experience.id}
-          rating={experience.rating}
-          numberReviews={experience.numberReviews}
-          country={experience.country}
-          description={experience.description}
-          price={experience.price}
-          soldOut={experience.soldOut}
-          cardBackground={experience.cardBackground}
-        />
+        <ExperienceCard key={experience.id} {...experience} />
       ))}
     </div>
   );
